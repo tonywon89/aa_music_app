@@ -49,7 +49,7 @@ class AlbumsController < ApplicationController
     band = @album.band
 
     @album.destroy
-    
+
     redirect_to band_albums_url(band)
   end
 
