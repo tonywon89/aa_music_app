@@ -12,8 +12,8 @@
 #
 
 class Track < ActiveRecord::Base
-  validates :name, :album_id, :track_type, presence: true
-  
+  validates :name, :album, :track_type, presence: true
+
   belongs_to :album
 
 end

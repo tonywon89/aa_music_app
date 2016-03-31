@@ -11,11 +11,11 @@
 #
 
 class Album < ActiveRecord::Base
-  validates :name, :band_id, :album_type, presence: true
+  validates :name, :band, :album_type, presence: true
   validates :album_type, inclusion: { in: %w(Live, Studio) }
   validates :band_id, uniqueness: true
 
   belongs_to :band
-  has_many :tracks
+  has_many :tracks, dependent: :destroy
 
 end
