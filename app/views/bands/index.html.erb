@@ -1,9 +1,7 @@
 <h1> All the bands </h1>
 
 <% @bands.each do |band| %>
-  <p>
-    <%= band.name %>
-  </p>
+    <p> <%= band.name %> <%= link_to "Edit Band", edit_band_url(band) %> </p>
 <% end %>
 
 <%= button_to "Make new band", new_band_url, method: :get %>
