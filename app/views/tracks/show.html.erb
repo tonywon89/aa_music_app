@@ -1,2 +1,5 @@
-<h1>Tracks#show</h1>
-<p>Find me in app/views/tracks/show.html.erb</p>
+<h1>Title <%= @track.name %></h1>
+
+<% @track.notes.each do |note| %>
+  <%= render "notes/note", note: note %>
+<% end %>

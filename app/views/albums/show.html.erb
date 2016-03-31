@@ -8,7 +8,7 @@
   </tr>
   <% @album.tracks.each do |track| %>
     <tr>
-      <td><%= track.name %></td>
+      <td><%= link_to track.name, track_url(track) %></td>
       <td><%= track.track_type %></td>
       <td><%= track.lyrics %></td>
       <td>
