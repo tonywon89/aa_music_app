@@ -21,13 +21,34 @@ class TracksController < ApplicationController
   end
 
   def edit
+    @track = Track.find_by(id: params[:id])
+    @albums = Album.all
 
   end
 
   def update
+    @track = Track.find_by(id: params[:id])
+
+    if @track.update(track_params)
+      redirect_to album_url(@track.album)
+    else
+      flash.now[:errors] = "Could not update track"
+      @albums = Album.all
+      render :edit
+    end
+
   end
 
   def show
+  end
+
+  def destroy
+    @track = Track.find_by(id: params[:id])
+    @album = @track.album
+
+    @track.destroy
+
+    redirect_to album_url(@album)
   end
 
   private

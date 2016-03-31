@@ -23,9 +23,11 @@ class BandsController < ApplicationController
   end
 
   def show
+    @band = Band.find_by(id: params[:id])
+    
   end
 
-  def destroy 
+  def destroy
     @band = Band.find_by(id: params[:id])
     @band.destroy
     redirect_to bands_url

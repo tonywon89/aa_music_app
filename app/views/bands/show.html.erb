@@ -1,2 +1,25 @@
-<h1>Bands#show</h1>
-<p>Find me in app/views/bands/show.html.erb</p>
+<h1><%= @band.name %></h1>
+<h2>Albums</h2>
+
+<table border="1">
+  <tr>
+    <th> Album </th>
+    <th> Type </th>
+
+  </tr>
+  <% @band.albums.each do |album| %>
+    <tr>
+      <td><%= link_to album.name, album_url(album) %></td>
+      <td><%= album.album_type %></td>
+
+      <td>
+        <%= button_to "edit", edit_album_url(album), method: :get %>
+      </td>
+      <td>
+        <%= button_to "delete", album_url(album), method: :delete %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to "Add an album", new_band_album_url(@band) %>

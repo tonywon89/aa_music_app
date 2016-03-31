@@ -10,7 +10,7 @@
   <select name="track[album_id]">
     <option> </option>
     <% albums.each do |album| %>
-      <option value="<%= album.id %>" <%= "selected" if track.album_id == album.id %>>
+      <option value="<%= album.id %>" <%= "selected" if track.album_id == album.id || album_id = params[:album_id] %>>
         <%= album.name %>
       </option>
     <% end %>
@@ -34,7 +34,7 @@
   <% end %>
   <br />
   <label for="track[lyrics]">Lyrics</label> <br />
-  <textarea name="track[lyrics]" rows="8" cols="40"></textarea>
+  <textarea name="track[lyrics]" rows="8" cols="40"><%= track.lyrics %></textarea>
   <br />
 
   <input type="submit" value="<%= submit %>">

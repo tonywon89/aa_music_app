@@ -9,7 +9,7 @@
   <select name="album[band_id]">
     <option> </option>
     <% bands.each do |band| %>
-      <option value="<%= band.id %>" <%= "selected" if album.band_id == band.id %>>
+      <option value="<%= band.id %>" <%= "selected" if album.band_id == band.id || band.id = params[:band_id] %>>
         <%= band.name %>
       </option>
     <% end %>

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
 
   resources :bands do
-    resources :albums, only: [:new, :index]
+    resources :albums, only: [:new]
   end
 
   resources :albums, except: [:new, :index] do

@@ -1,10 +1,4 @@
 class AlbumsController < ApplicationController
-  def index
-    band_id = params[:band_id]
-    @band = Band.find_by(id: band_id)
-    @albums = Album.where(band_id: band_id)
-
-  end
 
   def new
     @bands = Band.all
@@ -15,7 +9,7 @@ class AlbumsController < ApplicationController
     @album = Album.new(album_params)
 
     if @album.save
-      redirect_to band_albums_url(@album.band)
+      redirect_to band_url(@album.band)
     else
       @bands = Band.all
       flash.now[:errors] = "Cannot make that album"
@@ -36,7 +30,7 @@ class AlbumsController < ApplicationController
     @album = Album.find_by(id: params[:id])
 
     if @album.update(album_params)
-      redirect_to band_albums_url(@album.band)
+      redirect_to band_url(@album.band)
     else
       @bands = Band.all
       flash.now[:errors] = "Cannot update that album"
@@ -50,7 +44,7 @@ class AlbumsController < ApplicationController
 
     @album.destroy
 
-    redirect_to band_albums_url(band)
+    redirect_to band_url(band)
   end
 
 
