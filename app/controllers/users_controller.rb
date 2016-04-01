@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    render :new
+    session[:return_to] ||= request.referer
   end
 
   def create
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
     if @user.save
       login!(@user)
-      redirect_to users_url
+      redirect_to session.delete(:return_to)
     else
       flash.now[:errors] = "Failed to sign up"
       render :new

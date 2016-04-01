@@ -1,5 +1,7 @@
-<h3> <%= note.author.email %> </h3>
-
-<p>
-  <%= note.content %>
-</p>
+<tr>
+  <td><%= note.author.email %></td>
+  <td><%= note.content %></td>
+  <td><%= button_to "delete",
+          note_url(note),
+          method: :delete if note.author == current_user%></td>
+</tr>

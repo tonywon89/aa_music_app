@@ -16,6 +16,6 @@ class Track < ActiveRecord::Base
   validates :track_type, inclusion: { in: ["Regular", "Bonus"]}
 
   belongs_to :album
-  has_many :notes
+  has_many :notes, dependent: :destroy
 
 end

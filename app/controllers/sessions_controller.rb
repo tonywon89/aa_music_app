@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
 
   def new
     @user = User.new
+    session[:return_to] ||= request.referer
   end
 
   def create
@@ -13,7 +14,7 @@ class SessionsController < ApplicationController
 
     if @user
       login!(@user)
-      redirect_to users_url
+      redirect_to session.delete(:return_to)
     else
       flash.now[:errors] = "Invalid credentials"
       @user = User.new(email: email)

@@ -22,9 +22,19 @@ class BandsController < ApplicationController
     @band = Band.find_by(id: params[:id])
   end
 
+  def update
+    @band = Band.find_by(id: params[:id])
+
+    if @band.update(band_params)
+      redirect_to bands_url
+    else
+      flash.now[:errors] = "That band name has already been taken"
+      render :new
+    end
+  end
+
   def show
     @band = Band.find_by(id: params[:id])
-    
   end
 
   def destroy
