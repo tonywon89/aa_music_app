@@ -12,7 +12,7 @@ class AlbumsController < ApplicationController
       redirect_to band_url(@album.band)
     else
       @bands = Band.all
-      flash.now[:errors] = "Cannot make that album"
+      flash.now[:errors] = @album.errors.full_messages
       render :new
     end
   end
@@ -33,7 +33,7 @@ class AlbumsController < ApplicationController
       redirect_to band_url(@album.band)
     else
       @bands = Band.all
-      flash.now[:errors] = "Cannot update that album"
+      flash.now[:errors] = @album.errors.full_messages
       render :edit
     end
   end

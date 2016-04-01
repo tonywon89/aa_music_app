@@ -10,10 +10,11 @@ class BandsController < ApplicationController
 
   def create
     @band = Band.new(band_params)
+    
     if @band.save
       redirect_to bands_url
     else
-      flash.now[:errors] = "That band name has already been taken"
+      flash.now[:errors] = @band.errors.full_messages
       render :new
     end
   end
@@ -28,7 +29,7 @@ class BandsController < ApplicationController
     if @band.update(band_params)
       redirect_to bands_url
     else
-      flash.now[:errors] = "That band name has already been taken"
+      flash.now[:errors] = @band.errors.full_messages
       render :new
     end
   end

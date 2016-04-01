@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       login!(@user)
       redirect_to session.delete(:return_to)
     else
-      flash.now[:errors] = "Failed to sign up"
+      flash.now[:errors] = @user.errors.full_messages
       render :new
     end
 

@@ -5,7 +5,7 @@ module ApplicationHelper
     lines.each do |line|
       html += "&#9835;"
       html += h(line)
-      html += "\n"
+      html += "<br/>"
     end
 
     html.html_safe

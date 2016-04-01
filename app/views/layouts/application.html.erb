@@ -18,9 +18,9 @@
 <% end %>
 
 <% if flash[:errors]%>
-  <p>
-    <%= flash[:errors] %>
-  </p>
+  <% flash[:errors].each do |message| %>
+    <p><%= message %></p>
+  <% end %>
 <% end %>
 
 <%= yield %>

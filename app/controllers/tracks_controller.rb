@@ -32,7 +32,7 @@ class TracksController < ApplicationController
     if @track.update(track_params)
       redirect_to album_url(@track.album)
     else
-      flash.now[:errors] = "Could not update track"
+      flash.now[:errors] = @track.errors.full_messages
       @albums = Album.all
       render :edit
     end
