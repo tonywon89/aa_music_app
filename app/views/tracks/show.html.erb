@@ -1,5 +1,10 @@
 <h1>Title <%= @track.name %></h1>
 
+<% @track.lyrics.split("\n").each do |line| %>
+  <%= ugly_lyrics(line) %>
+  <br>
+<% end %>
+
 <table border="1">
   <tr>
     <th>Author</th>
